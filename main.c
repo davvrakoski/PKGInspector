@@ -257,11 +257,12 @@ int parser(FILE *file, char *s) {
 			if (strstr(s, keyphrases[i].strings) != NULL) {
 				keywordsfound += 1;
 				danger += keyphrases[i].warning_lvl;
+				printf(YELLOW "  [Line %i] Matched: '%s' (weight: %i)\n" RESET,
+                linecount, keyphrases[i].strings, keyphrases[i].warning_lvl);
 			}
 		};
 		if (keywordsfound > 0) {
-			printf(YELLOW "Warning: %i Keyword(s) Found On Line %i \n" RESET, 
-	  		keywordsfound, linecount);
+	          printf(YELLOW "  ^ %i keyword(s) on line %i\n" RESET, keywordsfound, linecount);
 		}
 		keywordsfound = 0;
 		linecount += 1;
