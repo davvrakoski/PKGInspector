@@ -22,6 +22,13 @@ git clone https://github.com/yourusername/pkgscan
 cd pkgscan
 make && sudo make install
 ```
+Or Via AUR:
+
+```bash
+paru -S pkgscan
+# or
+yay -S pkgscan
+```
 
 ## Usage
 Scan a package directly:

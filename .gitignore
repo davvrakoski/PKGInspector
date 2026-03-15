@@ -1,2 +1,3 @@
 pkgscan
 *.o
+*.tar.gz
