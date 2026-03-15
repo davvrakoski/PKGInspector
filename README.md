@@ -56,4 +56,4 @@ Keywords are defined in `keywords.h` and can be edited before recompiling.
 - Sophisticated attacks are outside the scope of this tool
 
 ## Contributing
-I'd appricate pull requests in order to help imrpove the code. To add or adjust detection patterns edit `keywords.h` and recompile.
+I'd appricate pull requests in order to help improve the code. To add or adjust detection patterns edit `keywords.h` and recompile.
