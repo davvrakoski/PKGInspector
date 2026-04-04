@@ -222,6 +222,7 @@ for (int i = 1; i < argc; i++) {
 }
 int total_pkgs = argc - 1 - hook_mode;
 int pkg_count = 0;
+int rejected = 0;
 for (int i = 1; i < argc; i++) {
     if (strcmp(argv[i], "--hook-mode") == 0) continue;
     char *pkg = argv[i];
@@ -258,22 +259,20 @@ for (int i = 1; i < argc; i++) {
     snprintf(clone_dir, sizeof(clone_dir), "/tmp/pkgscan-%s", pkg);
     aur_clone(pkg, clone_dir);
     int danger = scan_pkgbuild(clone_dir);
-    if (danger >= 0) {
+   if (danger >= 0) {
         print_risk(pkg, danger, suspicion_count, flags);
-    rm_pkg(clone_dir);
-if (hook_mode) {
-    if (!prompt_install(pkg, danger)) {
-        exit(1);
-    }
-} else {
-    if (prompt_install(pkg, danger))
-        do_install(pkg, clone_dir);
-}
-        }
-    else {
         rm_pkg(clone_dir);
+        if (hook_mode) {
+            if (!prompt_install(pkg, danger)) rejected = 1;
+        } else {
+            if (prompt_install(pkg, danger))
+                do_install(pkg, clone_dir);
         }
+    } else {
+        rm_pkg(clone_dir);
     }
+}
+if (rejected) exit(1);
 }
 
 void aur_clone(char *pkg, char *clone_dir) {
