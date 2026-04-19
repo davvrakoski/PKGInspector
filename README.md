@@ -63,7 +63,7 @@ Keywords are defined in `keywords.h` and can be edited before recompiling.
 
 ## Limitations
 - Static analysis only so obfuscated or encoded payloads may bypass detection
-- Keyword list is open siource and can be studied by malicious package authors
+- Keyword list is open source and can be studied by malicious package authors
 - Metadata flags are heuristics, not guarantees
 - Not a substitute for manual PKGBUILD review on high risk packages
 - Sophisticated attacks are outside the scope of this tool
